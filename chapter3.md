@@ -26,17 +26,19 @@ node --check app.js
 node -c app.js
 
 
-
+CODE SNIPPETS
 
 node can 'evaluate' directly from the shell to:
 (1)run small commands that use javascript
 or node core
 (2)checking code snippets
 
-node --print $ evaluates expression
-               to print DIRECT result
-               of expression DIRECTLY
-node --eval  $ evaluates, does nothing
+
+node --eval  $ runs javascript code
+node --print $ prints the result, equivalent to
+               explicit console.log
+               wrapper
+
 
 PRINTING RETURNS BY EVALAUTING FIRST
 I.E RUNNING THE COMMAND VIA NODE
@@ -71,7 +73,11 @@ stack trace limits
 stack trace limits are part of the V8 engine
 and as such are part of node --v8-options
 
+
+
 node --stack-trace-limit=101 app.js 
+
+
 
 the number specified equals the number of lines
 shown.
