@@ -68,4 +68,4 @@ debugger;
 it is used with the --inspect flag
 only.
 
-when not debugging, it is ignored..
+when not debugging, it is ignored.
