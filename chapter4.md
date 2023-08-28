@@ -20,12 +20,13 @@ this will output a url that can be
 used to connect to the debugger.
 
 to set a breakpoint at the start of the
-file we can do so,
-otherwise, the application will have fully
-initialized and may be performing
-asynchronous tasks.
+first executable line in the application,
+(before asynchronous tasks), use:
 
 node --inspect-brk app.js
+
+otherwise, asynchronous tasks will
+be executing.
 
 
 The remote debugging protocol
@@ -69,3 +70,4 @@ it is used with the --inspect flag
 only.
 
 when not debugging, it is ignored.
+
