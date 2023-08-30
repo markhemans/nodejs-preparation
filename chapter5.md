@@ -136,6 +136,8 @@ function createGreeting(A)
 Functions can be passed as arguments
 to functions.
 
+THIS. pt.1
+
 
 "this" keyword refers to the function
 on which it was CALLED, not the 
@@ -161,16 +163,6 @@ this context changes to the object
 on which that function was called.
 
 
-Functions have a "call" method that
-can be used
-to set their this context:
-
-function fn() { console.log(this.id) }
-const obj = { id: 999 }
-const obj2 = { id: 2 }
-fn.call(obj2) // prints 2
-fn.call(obj) // prints 999
-fn.call({id: ':)'}) // prints :)
 
 
 THIS
@@ -185,6 +177,22 @@ reference the global object. This is why
 when it is called on an function in an object,
 it will refer to the exact object on which
 it is called and not the context.
+
+
+CALL
+
+
+Functions have a "call" method that
+can be used
+to set their this context:
+
+function fn() { console.log(this.id) }
+const obj = { id: 999 }
+const obj2 = { id: 2 }
+fn.call(obj2) // prints 2
+fn.call(obj) // prints 999
+fn.call({id: ':)'}) // prints :)
+
 
 
 
