@@ -173,4 +173,19 @@ fn.call(obj) // prints 999
 fn.call({id: ':)'}) // prints :)
 
 
+THIS
+
+When a function is assigned to an object
+when the implicit *this* keyword
+is accessed within that function
+it will refer to the object on 
+which the function was called. if this is
+used in a regular function, it will
+reference the global object. This is why
+when it is called on an function in an object,
+it will refer to the exact object on which
+it is called and not the context.
+
+
+
 
