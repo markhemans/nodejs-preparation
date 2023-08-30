@@ -38,6 +38,9 @@ plus (+) operator.
 
 SYMBOLS
 
+Symbols are used as unique identifying
+keys for objects.
+
 Symbols are immutable and unique. 
 They can be used in
 many ways and can have flags.
@@ -61,7 +64,7 @@ Symbol(id): 123}
 Symbols are not included in for...in Loop
 
 The for...in loop does not iterate
-over Symbolic properties. For example,
+over Symbol properties. For example,
 
 let id = Symbol("id");
 
@@ -85,7 +88,12 @@ age
 everything else in JavaScript is an object.
 
 
+All objects in javascript have prototypes.
 
+Javascript is a prototypal language.
+
+if a property is not found in an object,
+it would be looked for in its prototype.
 
 
 
