@@ -73,16 +73,12 @@ let person = {
 
 // using for...in
 for (let key in person) {
-    console.log(key);
-}
+    console.log(key); }
 
-Output
+*output*
 
 name
 age
-
-
-
 
 
 
