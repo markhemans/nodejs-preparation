@@ -68,7 +68,7 @@ node -r
 
 
 
-stack trace limits
+STACK TRACE LIMITS
 
 stack trace limits are part of the V8 engine
 and as such are part of node --v8-options
