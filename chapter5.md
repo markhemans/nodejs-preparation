@@ -96,12 +96,18 @@ if a property is not found in an object,
 it would be looked for in its prototype.
 
 
+OBJECTS
 
+an object is any key, value pair in javascript
+with the value being any primitive data
+type or an object, or even a function as they
+are first class citizens.
 
+an objects key is called a property
 
-
-
-
+If an object doesn't have a particular
+property, the object's prototype
+is checked for that property. -inheritance
 
 
 
@@ -117,9 +123,9 @@ other value.
 
 Functions can be returned from functions
 
-function createGreeter(greeting)
+function createGreeting(A)
 {
-    function greet(name)
+    function greet(example)
     {
         console.log(greeting)
     }
@@ -165,4 +171,6 @@ const obj2 = { id: 2 }
 fn.call(obj2) // prints 2
 fn.call(obj) // prints 999
 fn.call({id: ':)'}) // prints :)
+
+
 
