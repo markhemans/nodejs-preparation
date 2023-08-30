@@ -121,9 +121,10 @@ function createGreeter(greeting)
 {
     function greet(name)
     {
-        console.log(greeting, 
+        console.log(greeting)
+    }
 
-    return greet;
+   return greet;
 }
 
 Functions can be passed as arguments
