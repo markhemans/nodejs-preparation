@@ -294,6 +294,36 @@ The functional approach to creating
 prototype chains is to use Object.create:
 
 
+PROPERTIES DESCRIPTOR
+
+Object properties, besides a value,
+have three special attributes
+( so-called “flags”):
+
+writable – if true, the value can be changed,
+otherwise it’s read-only.
+enumerable – if true, then listed in loops,
+otherwise not listed.
+configurable – if true, the property can be
+deleted and these attributes can be modified,
+otherwise not.
+
+The second argument of Object.create
+is the Properties Descriptor object.
+
+A Properties Descriptor object contains keys
+that will become the key name on the object
+being created. The values of these keys
+are Property Descriptor objects.
+
+
+When the dog prototype object is created,
+the property descriptor is an object with
+a woof key. The woof key references an
+object with the value property set to
+a function. This will result in the
+creation of an object with a woof method.
+
 
 
 
