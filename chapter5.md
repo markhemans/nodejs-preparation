@@ -1,6 +1,7 @@
 //
 
 understand this. keyword
+understand call
 
 //
 
@@ -219,10 +220,16 @@ to set their this context, i.e
 the object on which they are called.:
 
 
-function fn() { console.log(this.id) }
+function fn()
+{
+    console.log(this.id)
+}
 
-const obj = { id: 999 }
-const obj2 = { id: 2 }
+const obj = {
+    id: 999 }
+
+const obj2 = {
+    id: 2 }
 
 fn.call(obj2) // prints 2
 fn.call(obj) // prints 999
@@ -283,9 +290,9 @@ There are many approaches and variations
 to creating a prototype chain in JavaScript
 but we will explore three common approaches: 
 
-functional
-constructor functions
-class-syntax constructors.
+~functional
+~constructor functions
+~class-syntax constructors.
 
 
 functional approach:
@@ -308,6 +315,8 @@ configurable – if true, the property can be
 deleted and these attributes can be modified,
 otherwise not.
 
+OBECT.CREATE()
+
 The second argument of Object.create
 is the Properties Descriptor object.
 
@@ -324,8 +333,115 @@ object with the value property set to
 a function. This will result in the
 creation of an object with a woof method.
 
+So when rufus.woof() is called,
+the rufus object does not have a woof
+property itself. The runtime will then
+check if the prototype object of rufus
+has a woof property. The prototype of
+rufus is dog and it does have a woof
+property. The dog.woof function contains
+a reference to this. Typically, the this
+keyword refers to the object on which the
+method was called. Since woof was called
+on rufus and rufus has the name property
+which is "Rufus the dog", the this.name
+property in the woof method has the
+value "Rufus the dog" so console.log
+is passed the string: "Rufus the
+dog: woof".
+
+
+object.create (uses property descriptors)::
+
+const wolf = { 
+  howl: function ()
+        {
+    console.log(this.name + ': awoooooooo')
+        }
+             }
+
+const dog = Object.create(wolf, { 
+  woof: {                               *property descriptor key*
+    value: function()                    *property descriptor*
+            {
+        console.log(this.name + ': woof')
+            }
+        }
+                                })
+
+const rufus = Object.create(dog, {
+  name: {                               *property descriptor key*
+    value: 'Rufus the dog'               *property descriptor*
+        }
+                                 })
+
+rufus.woof() // prints "Rufus the dog: woof"
+rufus.howl() // prints "Rufus the dog: awoooooooo"
+
+
+
+CONSTRUCTOR FUNCTIONS
+
+
+All functions have a prototype property.
+This property is an object that
+contains a constructor property
+that references the function itself.
+
+When a function is used as a constructor
+with the new keyword, the prototype
+property of the function is used
+as the prototype of the new object.
+
+The Constructor approach to creating a prototype
+chain is to define properties on a function's prototype
+object and then call that function with "new":
+
+
+CLASS SYNTAX CONSTRUCTORS
+
+knowing javascript does not have classes,
+the class syntax is just syntactic sugar
+to create a function that can be called
+with new.
+
+
+class Wolf {
+  constructor (name) {
+    this.name = name
+  }
+  howl () { console.log(this.name + ': awoooooooo') }
+}
+
+class Dog extends Wolf {
+  constructor(name) {
+    super(name + ' the dog')
+  }
+  woof () { console.log(this.name + ': woof') }
+}
+
+const rufus = new Dog('Rufus')
 
 
 
 
+
+CLOSURE SCOPE
+
+When a function is created,
+an invisible object is also created
+this is known as closure scope.
+
+When a function is inside
+another function, it can access both
+its closure scope and outer closure scope.
+
+if there is a naming collision,
+the inner function will use its own
+variable and not the outer one.
+
+
+
+Closure scope cannot be accessed outside of
+a function:
 
