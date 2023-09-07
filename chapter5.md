@@ -2,6 +2,9 @@
 
 understand this. keyword
 understand call
+understand ... spread operator
+when a function is created an invisible
+object is created
 
 //
 
@@ -293,6 +296,7 @@ but we will explore three common approaches:
 ~functional
 ~constructor functions
 ~class-syntax constructors.
+~closure scope
 
 
 functional approach:
@@ -315,7 +319,10 @@ configurable – if true, the property can be
 deleted and these attributes can be modified,
 otherwise not.
 
-OBECT.CREATE()
+FUNCTIONAL APPROACH
+
+
+<<OBECT.CREATE()>>
 
 The second argument of Object.create
 is the Properties Descriptor object.
@@ -398,6 +405,40 @@ chain is to define properties on a function's prototype
 object and then call that function with "new":
 
 
+
+function Wolf (name) {
+  this.name = name
+}
+
+Wolf.prototype.howl = function () {
+  console.log(this.name + ': awoooooooo')
+}
+
+function Dog (name) {
+  Wolf.call(this, name + ' the dog')
+}
+
+function inherit (proto) {
+  function ChainLink(){}
+  ChainLink.prototype = proto
+  return new ChainLink()
+}
+
+Dog.prototype = inherit(Wolf.prototype)
+
+Dog.prototype.woof = function () {
+  console.log(this.name + ': woof')
+}
+
+const rufus = new Dog('Rufus')
+
+rufus.woof() // prints "Rufus the dog: woof"
+rufus.howl() // prints "Rufus the dog: awoooooooo"
+
+
+
+
+
 CLASS SYNTAX CONSTRUCTORS
 
 knowing javascript does not have classes,
@@ -444,4 +485,45 @@ variable and not the outer one.
 
 Closure scope cannot be accessed outside of
 a function:
+
+
+if a function returns a function, the
+returned function can provide controlled
+access to the parent closure scope:
+
+function init (type) {
+  var id = 0
+  return (name) => {
+    id += 1
+    return { id: id, type: type, name: name }
+  }
+}
+const createUser = init('user')
+const createBook = init('book')
+const dave = createUser('Dave')
+const annie = createUser('Annie')
+const ncb = createBook('Node Cookbook')
+console.log(dave) //prints {id: 1, type: 'user', name: 'Dave'}
+console.log(annie) //prints {id: 2, type: 'user', name: 'Annie'}
+console.log(ncb) //prints {id: 1, type: 'book', name: 'Node Cookbook'}
+
+The advantage of using closure scope to compose
+objects is it eliminates the complexity of prototypes,
+context (this) and the need to call a function with "new" 
+
+Closure scope can also be used as an alternative to
+prototypal inheritance. The following example
+provides equivalent functionality and the same
+level of composability as the three prototypal
+inheritance examples but it doesn't use a
+prototype chain, nor does it rely the
+implicit this keyword:
+
+
+theres the fccc
+
+functional
+constructor
+class-syntax
+
 
