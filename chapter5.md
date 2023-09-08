@@ -5,6 +5,7 @@ understand call
 understand ... spread operator
 when a function is created an invisible
 object is created
+learn the use of super in name construction
 
 //
 
@@ -319,7 +320,7 @@ configurable – if true, the property can be
 deleted and these attributes can be modified,
 otherwise not.
 
-FUNCTIONAL APPROACH
+FUNCTIONAL APPROACH (using Object.create)
 
 
 <<OBECT.CREATE()>>
@@ -387,8 +388,7 @@ rufus.howl() // prints "Rufus the dog: awoooooooo"
 
 
 
-CONSTRUCTOR FUNCTIONS
-
+CONSTRUCTOR FUNCTIONS (using functions & prototypes)
 
 All functions have a prototype property.
 This property is an object that
@@ -439,7 +439,7 @@ rufus.howl() // prints "Rufus the dog: awoooooooo"
 
 
 
-CLASS SYNTAX CONSTRUCTORS
+CLASS SYNTAX CONSTRUCTORS (using constructor (name) & extends))
 
 knowing javascript does not have classes,
 the class syntax is just syntactic sugar
@@ -451,14 +451,19 @@ class Wolf {
   constructor (name) {
     this.name = name
   }
+
   howl () { console.log(this.name + ': awoooooooo') }
+  barf() {console.log('barfed')}
+
 }
 
 class Dog extends Wolf {
   constructor(name) {
     super(name + ' the dog')
   }
+
   woof () { console.log(this.name + ': woof') }
+
 }
 
 const rufus = new Dog('Rufus')
