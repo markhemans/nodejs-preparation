@@ -198,9 +198,6 @@ on which it was defined. This is normally set
 on function invocation, but can be set
 explicitly using the call method.
 
-
-
-
 In an object method, this refers to the object.
 Alone, this refers to the global object.
 In a function, this refers to the global object.
@@ -235,9 +232,9 @@ const obj = {
 const obj2 = {
     id: 2 }
 
-fn.call(obj2) // prints 2
-fn.call(obj) // prints 999
-fn.call({id: ':)'}) // prints :)
+fn.call(obj2)         // prints 2
+fn.call(obj)          // prints 999
+fn.call({id: ':)'})   // prints :)
 
 
 In this case the fn function wasn't assigned
@@ -439,7 +436,7 @@ rufus.howl() // prints "Rufus the dog: awoooooooo"
 
 
 
-CLASS SYNTAX CONSTRUCTORS (using constructor (name) & extends))
+CLASS SYNTAX CONSTRUCTORS (using constructor (name) & extends)
 
 knowing javascript does not have classes,
 the class syntax is just syntactic sugar
@@ -532,3 +529,9 @@ constructor
 class-syntax
 
 
+
+Context is always the value 
+of the this keyword which is a
+reference to the object that “owns” the
+currently executing code or the function
+where it’s looked at.
