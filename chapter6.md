@@ -146,3 +146,11 @@ make the node_modules folder
 dispoable.
 
 
+to do this, run npm install
+(no namespace)
+
+node modules folder should
+not be added to git.
+
+
+## Development Dependencies
