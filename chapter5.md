@@ -524,9 +524,11 @@ implicit this keyword:
 
 theres the fccc
 
+
 functional
 constructor
 class-syntax
+closurescope
 
 
 
@@ -535,3 +537,4 @@ of the this keyword which is a
 reference to the object that “owns” the
 currently executing code or the function
 where it’s looked at.
+
