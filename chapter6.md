@@ -125,3 +125,24 @@ if a package-lock file is present
 then the user needs to manually
 manage dependency updates for each
 dependency.
+
+node uses a maximally-flat tree
+that places packages at the top
+level of a node_modules folder
+unless there are two different
+versions of the same package where
+its going to be placed in a
+new node_modules folder
+
+you can see packages with
+npm ls
+
+
+### ADDING DEPENDENCIES
+
+the primary reason for
+adding dependencies is to 
+make the node_modules folder
+dispoable.
+
+
