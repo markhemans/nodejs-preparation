@@ -191,9 +191,9 @@ When deploying a service or application for production use, we don't want to ins
 
 A --omit=dev flag can be used with npm install so that development dependencies are ignored.
 
-```
+~~~
 npm install --omit=dev
-```
+~~~
 
 
 # Semver
