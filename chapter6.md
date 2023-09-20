@@ -154,3 +154,79 @@ not be added to git.
 
 
 ## Development Dependencies
+
+only top-level development dependencies
+are installed. development dependencies
+of low-level packages are not installed.
+
+Not all dependencies are required for
+production, some are tools to support the development process.
+
+npm ls --depth=999
+
+When we run , we only see the production dependencies
+in the tree, none of the development dependencies are installed,
+because the development dependencies of installed packages are never installed.
+
+
+### deduped
+
+Notice how the atomic-sleep sub-dependency occurs twice in the output. The second occurrence has the word deduped next to it. The atomic-sleep module is a dependency of both pino and its direct dependency sonic-boom, but both pino and sonic-boom rely on the same version of atomic-sleep. Which allows npm to place a single atomic-sleep package in the node_modules folder.
+
+### installing a devdependency
+
+Let's install a linter as a development dependency into my-package:
+
+npm install --save-dev standard
+
+
+now a devdependencies feild is added
+to the package.json
+
+npm ls --depth=999
+reveals a larger dependency tree
+
+
+When deploying a service or application for production use, we don't want to install any dependencies that aren't needed in production.
+
+A --omit=dev flag can be used with npm install so that development dependencies are ignored.
+
+```
+npm install --omit=dev
+```
+
+
+# Semver
+
+0.0.0
+
+major changes break an api
+or behavior
+
+minor changes mean the package
+was extended but is backwards
+compatible
+
+patches mean there has
+been a *bug* fix
+
+
+
+using x's in major/minor/patches
+positions is the closest way to
+do versioning management
+it can also be replaced
+with using carats (^) next
+to numbers to indicate the rest
+are x's
+
+
+scripts feild, you can create
+objects to run as shell commands
+
+
+Packages can assign a "bin" field
+in their package.json, which will
+associate a namespace with a Node program
+script within that package.
+
