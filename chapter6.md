@@ -177,7 +177,7 @@ Notice how the atomic-sleep sub-dependency occurs twice in the output. The secon
 
 Let's install a linter as a development dependency into my-package:
 
-npm install --save-dev standard
+`npm install --save-dev standard`
 
 
 now a devdependencies feild is added
