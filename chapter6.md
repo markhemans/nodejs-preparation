@@ -157,7 +157,7 @@ not be added to git.
 
 only top-level development dependencies
 are installed. development dependencies
-of low-level packages are not installed.
+of sub-dependencies are not installed.
 
 Not all dependencies are required for
 production, some are tools to support the development process.
@@ -177,7 +177,7 @@ Notice how the atomic-sleep sub-dependency occurs twice in the output. The secon
 
 Let's install a linter as a development dependency into my-package:
 
-`npm install --save-dev standard`
+npm install --save-dev standard
 
 
 now a devdependencies feild is added
@@ -221,12 +221,47 @@ to numbers to indicate the rest
 are x's
 
 
-scripts feild, you can create
-objects to run as shell commands
+## creating bin feild in package.json
+
+adding a bin feild would allow you
+to use a namespace to create a command
+
+In the case of standard, it associates
+a command named standard with
+a Node program script that performs linting.
 
 
-Packages can assign a "bin" field
-in their package.json, which will
-associate a namespace with a Node program
-script within that package.
+scripts can be executed
+using the npm command
+
+~~~
+npm run *script*
+~~~
+
+
+we can use a double dash to
+pass flags to an npm run script,
+in this case, lint has a fix flag
+
+~~
+npm run lint -- --fix
+~~
+
+
+# npm test and start
+
+There are two package scripts namespaces
+that have dedicated npm commands:
+npm test and npm start.
+
+they are aliases of npm run test
+and npm run start
+
+```
+"scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
+  }
+```
 
