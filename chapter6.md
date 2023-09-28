@@ -1,42 +1,46 @@
-//
+/
 
-npm client
-associated manifest file
+npm flags are usually not followed by dashes 
 
-//
-
-
-the npm command is a package
-manager that points by default to
-npmjs.com registry. this is the
-default module registry.
+importance of package.json file
 
 
-npm help            *no hyphen at help*
+/
+
+# PACKAGES & DEPENDENCIES
+
+
+the npm points to the
+npmjs.com registry by default. 
 
 this command prints out a list
-of npm commands
+of npm commands :
 
+
+npm help     *remember to include no hyphen*
 
 
 to view the help command
 for an individual command add
-the flag at the end of the command
+the help flag at the end of the command :
 
-npm install -h          *no hyphen at install*
+npm install -h    *no hyphen at install, but hyphen at help, just -h*
 
 
 a package is a folder with some code
 in it and a package.json file
 
-
 a node.js application or service is also
 a package.
 
+to initialize a package:
 
-npm init is used to initialize a package
-and it can be sped up by using a -y flag
-to answer yes to all the questions.
+
+npm init
+
+
+it can be sped up to include a yes
+to all the questions using a -y flag.
 
 
 The default fields in a generated
@@ -61,142 +65,99 @@ author – the package author
 license – the package license.
 
 
-a package initialized in a git
-repository can read
-its remote url from
-git and add it to the 
-package.json
+
+when any dependencies are installed:
 
 
-once a program has a package.json
-file dependencies can be
-installed, such as a logger
+In addition, a:
+
+*node_modules*
 
 
-In addition, a node_modules
-folder
-and a package-lock.json file
-will have been added to
-a package.json folder
+folder and a:
 
-when a dependacy is installed,
-the dependencies
+*package-lock.json*
+
+
+file will have been added to
+already existing package.json folder
+
+when a "dependancy" is installed,
+the *dependencies*
 flag in the package.json is updated
 
 The "dependencies" field
-contains an object,
-the keys of the object
+contains an object:
+
+the *keys* of the object
 contain dependency
-namespaces, the values in the object contain
+namespaces.
+
+the *values* in the object contain
 the Semver range version number for that dependency.
 
+...
+"DEPENDENCIES": {
 
-when a dependency is installed
-a node_nodules and a
-package-lock.json file are
-created.
+        "KEYS" : "VALUES,
+}
+
+## package-lock.json file
 
 the package-lock.json
 file contains a map of all dependencies
 with their exact versions.
 
-this is useful when a node product
-is about to be released and we need
-to keep the current installed versions
-stable.
+## dependency tree
 
-otherwise it is more sensible to
-use the latest versions of node
-packages. node uses the package-lock
-to pull the dependencies
+you can see all packages with:
 
-we can edit the package-lock flag in the
-.npmrc file in the home directory
-to not create package-lock files
-
-
-
-then to manually create a package-lock
-file we use  npm install --package-lock
-to manually set this preference
-
-
-if a package-lock file is present
-then the user needs to manually
-manage dependency updates for each
-dependency.
-
-node uses a maximally-flat tree
-that places packages at the top
-level of a node_modules folder
-unless there are two different
-versions of the same package where
-its going to be placed in a
-new node_modules folder
-
-you can see packages with
 npm ls
 
+The tree shown is the logical dependency tree,
+based on package dependencies, not the physical
+layout of your node_modules folder.
 
-### ADDING DEPENDENCIES
+Running:
 
-the primary reason for
-adding dependencies is to 
-make the node_modules folder
-dispoable.
+npm ls --depth=999 
 
+now reveals a much larger dependency tree.
 
-to do this, run npm install
-(no namespace)
+## npm install
 
-node modules folder should
-not be added to git.
+if you have packages in the package-lock.json
+running:
 
+npm install
 
-## Development Dependencies
+would add them to the node_modules folder
 
-only top-level development dependencies
-are installed. development dependencies
-of sub-dependencies are not installed.
+## development-dependencies installations
 
-Not all dependencies are required for
-production, some are tools to support the development process.
+development dependencies of installed
+packages are never installed for your package.
+but you can install them explicitly for yourself,
 
-npm ls --depth=999
+### INSTALLING A DEVELOPMENT DEPENDENCY
 
-When we run , we only see the production dependencies
-in the tree, none of the development dependencies are installed,
-because the development dependencies of installed packages are never installed.
+to install a dev-dependency:
 
+npm install --save-dev *dev-dependency-name*
 
-### deduped
+### OMITTING DEV-DEPENDENCIES FOR PRODUCTION
 
-Notice how the atomic-sleep sub-dependency occurs twice in the output. The second occurrence has the word deduped next to it. The atomic-sleep module is a dependency of both pino and its direct dependency sonic-boom, but both pino and sonic-boom rely on the same version of atomic-sleep. Which allows npm to place a single atomic-sleep package in the node_modules folder.
+When deploying a service or application
+for production use,
+we don't want to install any dev-dependencies
+that aren't needed in production.
 
-### installing a devdependency
+to do this:
 
-Let's install a linter as a development dependency into my-package:
-
-npm install --save-dev standard
-
-
-now a devdependencies feild is added
-to the package.json
-
-npm ls --depth=999
-reveals a larger dependency tree
-
-
-When deploying a service or application for production use, we don't want to install any dependencies that aren't needed in production.
-
-A --omit=dev flag can be used with npm install so that development dependencies are ignored.
-
-~~~
 npm install --omit=dev
-~~~
 
 
-# Semver
+# UNDERSTANDING SEMVER
 
 0.0.0
 
@@ -220,42 +181,42 @@ with using carats (^) next
 to numbers to indicate the rest
 are x's
 
+### deduped
 
-## creating bin feild in package.json
-
-adding a bin feild would allow you
-to use a namespace to create a command
-
-In the case of standard, it associates
-a command named standard with
-a Node program script that performs linting.
+when a subpackage has a dependency
+that its enclosing package shares SEMVER
+with, it is installed only higher
+and the subpackage relies on that one
+creating a *deduped version*.
 
 
-scripts can be executed
-using the npm command
 
-~~~
+## Package Scripts
+
+the "scripts" feild in a package.json
+allows you to define shell commands:
+
+ "scripts": {
+    "test": "echo \"error no test specified"\ && exit 1 ",
+
+
+    "CREATED_SHELL_COMMAND": "BIN_COMMAND"
+  }
+
+package scripts are run by specifying
+
+
 npm run *script*
-~~~
-
-
-we can use a double dash to
-pass flags to an npm run script,
-in this case, lint has a fix flag
-
-~~
-npm run lint -- --fix
-~~
 
 
 # npm test and start
 
 There are two package scripts namespaces
-that have dedicated npm commands:
+that have *dedicated* npm commands:
 npm test and npm start.
 
-they are aliases of npm run test
-and npm run start
+they are aliases of *npm run test*
+and *npm run start*
 
 ```
 "scripts": {
@@ -265,3 +226,86 @@ and npm run start
   }
 ```
 
+## creating bin feild in package.json
+
+
+adding a bin feild would allow you
+to use associate a namespace to a
+a Node program script within
+that package.
+
+
+The bin field maps one or more
+command name(s) to one or more
+script file(s) inside the package
+that can be executed in multiple ways 
+
+"bin": {
+    "command-name": "path/to/script/file.js"
+  }
+
+
+
+
+/
+
+ADDITIONAL NOTES
+
+ a package initialized in a git
+repository can read
+its own remote url from
+git and add it to the 
+package.json
+
+### package-lock.json file
+
+(this is useful when a node product
+is about to be released and we need
+to keep the current installed versions
+stable.)
+
+otherwise it is more sensible to
+use the latest versions of node
+packages. node uses the package-lock
+to pull the dependencies
+
+we can edit the package-lock flag in the
+.npmrc file in the home directory
+to *not* create package-lock files
+
+then, to manually create a package-lock
+file we use  npm install --package-lock
+to manually set this preference
+
+### dependency tree
+
+if a package-lock file is present
+then the user needs to manually
+manage dependency updates for each
+dependency inside.
+
+node uses a *maximally-flat* tree
+that places each package at the top
+level of a node_modules folder
+
+unless there are *two different*
+*versions* of the same package where
+its going to be placed in a
+new node_modules folder
+
+
+
+node modules folder should
+not be added to git.
+
+### Development Dependencies
+
+*only top-level development dependencies*
+are installed. development dependencies
+of sub-dependencies are not installed.
+
+Not all dependencies are required for
+production, some are tools to support the
+development process.
+
+/

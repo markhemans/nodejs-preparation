@@ -1,4 +1,4 @@
-//
+/
 
 understand this. keyword
 understand call
@@ -7,7 +7,9 @@ when a function is created an invisible
 object is created
 learn the use of super in name construction
 
-//
+/
+
+# KEY JAVASCRIPT CONCEPTS
 
 DATA TYPES
 
