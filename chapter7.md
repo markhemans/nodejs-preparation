@@ -1,7 +1,7 @@
 
 /
 
-strict mode
+ESM executes in strict-mode by default
 
 language specific ESM modules
 CJS module system
@@ -54,11 +54,16 @@ else
     module.exports = some-variable
 }
 
-## ESM modules
+## connverting CJS to ESM modules using .mjs extension (synchronous to asynchronous)
 
 they allow the browser to
 pre-parse imports and collect scripts
 
+the files have a .mjs extension
+if there are other cjs files
+
+ CJS cannot require ESM since that
+ would break the synchronous constraint. 
 
 
 
@@ -73,9 +78,8 @@ pre-parse imports and collect scripts
 
 
 
+/
 
-
-/ 
 ADDITIONAL NOTES
 
 in strict mode,
