@@ -66,6 +66,16 @@ an event
 
 
 
+## the 'error' event
+
+the error event will cause the
+listener to throw an exception
+
+ee.on('error', )
+
+
+
+
 /
 ADDITIONAL NOTES
 
