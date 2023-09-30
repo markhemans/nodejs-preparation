@@ -1,18 +1,27 @@
-## events emitter
+/
 
-the events module exports
-an EventEmitter object:
+create events
+consume events
+
+http , tcp use events
+
+/
+
+
+# NODE EVENT SYSTEM
+
+
+
+## creating events emitter
+
 
 const {EventEmitter} = require('events') *cjs node*
-const EventEmitter = require('events') *ECMA node*
-
-to use it, call it with new
-
+const EventEmitter = require('events') *ESM VERSION*
 
 const myEmitter = new EventEmitter();
 
 
-## emitting
+## using emit method
 
 const { EventEmitter } = require('events')
 const myEmitter = new EventEmitter()
