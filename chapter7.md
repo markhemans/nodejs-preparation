@@ -3,8 +3,9 @@
 
 ESM executes in strict-mode by default
 
-language specific ESM modules
-CJS module system
+require()
+vs.
+import()
 
 /
 
@@ -59,11 +60,9 @@ else
 they allow the browser to
 pre-parse imports and collect scripts
 
-the files have a .mjs extension
-if there are other cjs files
+no need for .mjs extension 
 
- CJS cannot require ESM since that
- would break the synchronous constraint. 
+
 
 
 
