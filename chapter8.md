@@ -1,3 +1,17 @@
+/
+
+
+
+/
+
+# ASYNCHRONOUS CONTROL FLOW
+
+
+tasks can be scheduled and another
+task can be completed before the
+task is selected
+
+
 after the process called in
 a setTimeout() function is called
 the function in the declaration
@@ -32,8 +46,12 @@ that will be called with the file data (and the error):
 it uses memory meaning asynchrously it would
 pull smaller files first concurently
 
-What if we wanted to use serial execution, let's say we want bigFile to print first,
-then mediumFile even though they take longer to load than smallFile. Well now the callbacks have to be placed inside each other:
+What if we wanted to use serial execution,
+let's say we want bigFile to print first,
+then mediumFile even though they take longer
+to load than smallFile. Well now the
+callbacks have to be placed inside each other:
+
 
 const { readFile } = require('fs')
 const [ bigFile, mediumFile, smallFile ] = Array.from(Array(3)).fill(__filename)
@@ -44,6 +62,8 @@ const print = (err, contents) => {
   }
   console.log(contents.toString())
 }
+
+
 readFile(bigFile, (err, contents) => {
   print(err, contents)
   readFile(mediumFile, (err, contents) => {
