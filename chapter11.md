@@ -44,5 +44,8 @@ console.log(buffer + '') // prints 👀
  .toString('hex')
 
 
- 
+ ## JSON Stringify & Parse
+
+ JSON.stringify()
+ JSON.parse()
 
