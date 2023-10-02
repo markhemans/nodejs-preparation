@@ -30,7 +30,7 @@ Symbol: can be used as unique identifier keys
         & Symbol.for('description')
 
 
-STRINGS
+## STRINGS
 
 
 Strings can be created with single
@@ -45,7 +45,7 @@ be concatenated together using the
 plus (+) operator.
 
 
-SYMBOLS
+## SYMBOLS
 
 Symbols are used as unique identifying
 keys for objects.
@@ -107,7 +107,7 @@ it would be looked for in its prototype.
 
 
 
-OBJECTS
+## OBJECTS
 
 an object is any key, value pair in javascript
 with the value being any primitive data
@@ -123,7 +123,7 @@ is checked for that property. -inheritance
 
 
 
-FUNCTIONS
+## FUNCTIONS
 
 Functions are first class citizens
 in JavaScript.
@@ -182,7 +182,7 @@ on which that function was called.
 
 
 
-THIS
+## .THIS
 
 When a function is assigned to an object
 when the implicit *this* keyword
@@ -213,7 +213,7 @@ and bind() can refer this to any object.
 
 
 
-CALL
+## .CALL
 
 .call 
 
@@ -245,7 +245,7 @@ via the call function.
 
 
 
-FAT ARROW FUNCTIONS
+## FAT ARROW FUNCTIONS
 
 Fat arrow functions are a new syntax
 for defining functions in ES6.
@@ -286,7 +286,7 @@ number of arguments.
 
 
 
-PROTOTYPAL INHERITANCE
+## PROTOTYPAL INHERITANCE
 
 
 There are many approaches and variations
@@ -298,6 +298,8 @@ but we will explore three common approaches:
 ~class-syntax constructors.
 ~closure scope
 
+
+## FUNCTIONAL
 
 functional approach:
 
@@ -322,7 +324,7 @@ otherwise not.
 FUNCTIONAL APPROACH (using Object.create)
 
 
-<<OBECT.CREATE()>>
+### OBECT.CREATE()
 
 The second argument of Object.create
 is the Properties Descriptor object.
@@ -387,7 +389,7 @@ rufus.howl() // prints "Rufus the dog: awoooooooo"
 
 
 
-CONSTRUCTOR FUNCTIONS (using functions & prototypes)
+## CONSTRUCTOR FUNCTIONS (using functions & prototypes)
 
 All functions have a prototype property.
 This property is an object that
@@ -471,7 +473,7 @@ const rufus = new Dog('Rufus')
 
 
 
-CLOSURE SCOPE
+## CLOSURE SCOPE
 
 When a function is created,
 an invisible object is also created
@@ -482,9 +484,8 @@ another function, it can access both
 its closure scope and outer closure scope.
 
 if there is a naming collision,
-the inner function will use its own
-variable and not the outer one.
-
+the *inner* function will *use its own*
+variable and *not the outer one*.
 
 
 Closure scope cannot be accessed outside of
@@ -492,7 +493,7 @@ a function:
 
 
 if a function returns a function, the
-returned function can provide controlled
+returned function can *provide controlled*
 access to the parent closure scope:
 
 function init (type) {
